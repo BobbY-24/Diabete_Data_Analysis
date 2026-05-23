@@ -1,83 +1,53 @@
-📌 Project Overview
+# Diabetes Health Indicator Analysis
 
-This project aims to analyze a diabetes dataset and build classification models to predict whether a patient has diabetes ("Yes") or not ("No").
-Both numerical and categorical features are considered, and different preprocessing methods are compared to assess their impact on model performance.
+## Overview
+This project analyzes diabetes-related health indicators and trains classification models to predict diabetes status. It uses a public health dataset with demographic, behavioral, and medical indicator features. The notebook compares preprocessing methods and reports class-level model performance.
 
-The work involves:
+## Motivation
+Health-related classification projects are valuable for practicing imbalanced classification, metric interpretation, and responsible limitation writing. This project demonstrates why accuracy alone can be misleading when some health classes are much harder to predict than others.
 
-Exploratory data analysis (EDA)
+## Dataset
+- **Source:** BRFSS 2015 diabetes health indicators dataset.
+- **File:** `data/diabetes_012_health_indicators_BRFSS2015.csv`
+- **Target variable:** diabetes status encoded as `0.0`, `1.0`, and `2.0`.
+- **Important features:** TODO: add major health indicator features after rerunning notebook.
+- **Dataset size:** TODO: add dataset size after rerunning notebook.
+- **Known limitations:** Public health survey data may include sampling bias, self-reporting bias, and class imbalance.
 
-Preprocessing numerical and categorical data
+## Methods
+- Loaded and inspected the diabetes health indicators dataset.
+- Compared preprocessing approaches.
+- Trained classification models.
+- Evaluated with accuracy, precision, recall, and F1-score.
 
-Building and comparing multiple classification models
+## Results
+The notebook reports approximately **0.8483 accuracy** for two methods. However, the class-level report shows very weak performance for class `1.0`, including zero precision and recall in the displayed output.
 
-Evaluating accuracy, precision, recall, and F1-score
+This is an important limitation: the model appears to perform well overall because the majority class dominates the dataset.
 
-📂 Dataset
+## Key Insights
+- Accuracy is not enough for imbalanced health classification.
+- Minority-class recall needs major improvement before the model can be considered useful.
+- The project is strongest when framed as metric analysis and model-diagnosis practice.
 
-The dataset contains patient health-related data with both numerical (e.g., glucose level, BMI) and categorical features (e.g., gender, smoking status).
-The target variable is "diabetes" with two possible values:
+## Limitations
+- This is not a medical diagnostic model.
+- The model performs poorly on at least one minority class.
+- The notebook does not yet include class balancing, threshold tuning, or cross-validation.
+- Dataset collection and clinical validity are not documented in this repository.
 
-Yes → Patient has diabetes
+## Future Improvements
+- Add class distribution plots.
+- Try class weighting, resampling, and better baselines.
+- Report macro-F1 and balanced accuracy.
+- Add a model card emphasizing non-clinical use.
 
-No → Patient does not have diabetes
-
-🛠 Methods
-
-We tested three approaches for preprocessing and model training:
-
-Method 1 – Combined Preprocessing Pipeline
-
-Used ColumnTransformer to apply:
-
-StandardScaler for numerical features
-
-OneHotEncoder for categorical features
-
-Trained a RandomForestClassifier in a single pipeline
-
-Accuracy: ~0.85
-
-Method 2 – Manual Encoding + Scaling
-
-Manually:
-
-Encoded categorical variables using pd.get_dummies
-
-Scaled numerical columns with StandardScaler
-
-Trained a RandomForestClassifier
-
-Accuracy: ~0.85
-
-Method 3 – Numerical Only
-
-Used only numerical columns with StandardScaler
-
-Ignored categorical features
-
-Trained a RandomForestClassifier
-
-Accuracy: ~0.65
-
-📊 Model Comparison
-Method	Categorical Data Used	Preprocessing Type	Accuracy	Notes
-1	✅ Yes	Pipeline (OneHot + Scaling)	0.85	Fully automated pipeline
-2	✅ Yes	Manual (GetDummies + Scaling)	0.85	Similar to Method 1 but manual steps
-3	❌ No	Scaling only	0.65	Ignoring categorical features hurt performance
-⚙️ Technologies Used
-
-Python
-
-pandas
-
-numpy
-
-scikit-learn
-
-matplotlib / seaborn (for EDA)
-
-📈 Conclusion
-
-Including categorical features significantly improves model performance (from ~0.65 to ~0.85).
-Both pipeline-based and manual preprocessing methods yield similar results, but pipelines are generally more maintainable and less error-prone.
+## How to Run
+```bash
+git clone https://github.com/BobbY-24/Diabete_Data_Analysis.git
+cd Diabete_Data_Analysis
+python -m venv .venv
+source .venv/bin/activate
+pip install -r requirements.txt
+jupyter notebook notebooks/diabetes_data_analysis.ipynb
+```
