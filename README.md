@@ -1,44 +1,40 @@
 # Diabetes Health Indicator Analysis
 
 ## Overview
-This project analyzes diabetes-related health indicators and trains classification models to predict diabetes status. It uses a public health dataset with demographic, behavioral, and medical indicator features. The notebook compares preprocessing methods and reports class-level model performance.
+I analyzed diabetes-related health indicators and trained classification models to predict diabetes status. I use a public health dataset with demographic, behavioral, and medical indicator features.
 
 ## Motivation
-Health-related classification projects are valuable for practicing imbalanced classification, metric interpretation, and responsible limitation writing. This project demonstrates why accuracy alone can be misleading when some health classes are much harder to predict than others.
+I used this project to practice imbalanced classification and metric interpretation. It taught me why accuracy alone can be misleading when some health classes are much harder to predict than others.
 
 ## Dataset
 - **Source:** BRFSS 2015 diabetes health indicators dataset.
 - **File:** `data/diabetes_012_health_indicators_BRFSS2015.csv`
 - **Target variable:** diabetes status encoded as `0.0`, `1.0`, and `2.0`.
-- **Important features:** TODO: add major health indicator features after rerunning notebook.
-- **Dataset size:** TODO: add dataset size after rerunning notebook.
-- **Known limitations:** Public health survey data may include sampling bias, self-reporting bias, and class imbalance.
+- **Known limitations:** Public health survey data can include sampling bias, self-reporting bias, and class imbalance.
 
 ## Methods
-- Loaded and inspected the diabetes health indicators dataset.
-- Compared preprocessing approaches.
-- Trained classification models.
-- Evaluated with accuracy, precision, recall, and F1-score.
+- I loaded and inspected the diabetes health indicators dataset.
+- I compared preprocessing approaches.
+- I trained classification models.
+- I evaluated accuracy, precision, recall, and F1-score.
 
 ## Results
-The notebook reports approximately **0.8483 accuracy** for two methods. However, the class-level report shows very weak performance for class `1.0`, including zero precision and recall in the displayed output.
-
-This is an important limitation: the model appears to perform well overall because the majority class dominates the dataset.
+My notebook reports approximately **0.8483 accuracy** for two methods. The class-level report shows weak performance for class `1.0`, including zero precision and recall in the displayed output.
 
 ## Key Insights
 - Accuracy is not enough for imbalanced health classification.
-- Minority-class recall needs major improvement before the model can be considered useful.
-- The project is strongest when framed as metric analysis and model-diagnosis practice.
+- Minority-class recall needs major improvement before the model can be useful.
+- I treat the project as strongest when framed as model diagnosis rather than a polished medical predictor.
 
 ## Limitations
-- This is not a medical diagnostic model.
+- I do not intend this as a medical diagnostic model.
 - The model performs poorly on at least one minority class.
-- The notebook does not yet include class balancing, threshold tuning, or cross-validation.
+- I do not include class balancing, threshold tuning, or cross-validation yet.
 - Dataset collection and clinical validity are not documented in this repository.
 
 ## Future Improvements
 - Add class distribution plots.
-- Try class weighting, resampling, and better baselines.
+- Try class weighting, resampling, and stronger baselines.
 - Report macro-F1 and balanced accuracy.
 - Add a model card emphasizing non-clinical use.
 
